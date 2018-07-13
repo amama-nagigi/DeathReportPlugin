@@ -1,0 +1,137 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        * {
+            /* フォント （一部のフォントは上手く適用されない） */
+            font-family: "Meiryo";
+            font-size: 10px;
+            color: #DED7BE;
+            text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+
+        body, html {
+            margin: 0;
+        }
+
+        html {
+            /* リサイズ用のハンドル
+             * リサイズができる場所はウィンドウ右下の16x16ピクセルの場所
+             * この部分が完全に透明だとマウス入力が透過してしまってサイズを変更できなくなる */
+            background-image: url(handle.png);
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            height: 100%;
+            /* 外枠 */
+            /*border: 1px solid rgba(0,0,0,0.1);*/
+            /* はみ出た内容はスクロールバーを表示させずに隠す
+             * 今のところ、ブラウザへの入力はできないので表示させても無意味 */
+            overflow: hidden;
+            /* 背景色 */
+            background-color: transparent;
+        }
+
+        ul.container {
+            list-style-type: none;
+            padding-left: 0px;
+        }
+
+        table.detail {
+            padding-left: 20px;
+            line-height: 80%;
+        }
+
+        td.damage {
+            color: #ff0000;
+            text-shadow: -1px 0 2px #5b0000, 0 1px 2px #5b0000, 1px 0 2px #5b0000, 0 -1px 2px #5b0000;
+        }
+
+        td.healing {
+            color: #0d17d7;
+            text-shadow: -1px 0 2px #bbc4f8, 0 1px 2px #bbc4f8, 1px 0 2px #bbc4f8, 0 -1px 2px #bbc4f8;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span v-if="items.length == 0">no data to show.</span>
+        <ul class="container">
+            <li v-for="item in items">
+                <span @click="toggle(item)">[{{item.time}}]{{item.performer}}💀{{item.victim}}</span>
+                <table class="detail" v-if="item.showDetail">
+                    <tr v-for="detail in item.actions">
+                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 20px;">{{detail.before.toFixed(1)}}</td>
+                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" tyle="width: 200px;">{{detail.performer}}</td>
+                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 200px;">{{detail.name}}</td>
+                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 40px; text-align: right;">{{detail.point}}</td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var encStartTime = null;
+        var maxCount = 10;
+
+        // Vueインスタンス初期化
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                items: []
+            },
+            methods: {
+                toggle: function (item) {
+                    item.showDetail = !item.showDetail;
+                }
+            }
+        });
+
+        /* json サンプル
+        {
+            "actions": [
+                {
+                "name": "ショット",
+                "performer": "Fioh Lafihna",
+                "point": -1452,
+                "sec": 2.6279999999999997
+                },
+                {
+                "name": "Caustic Bite (*)",
+                "performer": "Fioh Lafihna",
+                "point": -855,
+                "sec": 1.628
+                }
+            ],
+            "encId": "e386aa25",
+            "performer": "Unknown",
+            "time": "/Date(1531399833628+0900)/",
+            "victim": "アメノ・シロジシ"
+        }
+        */
+
+        // json取得
+        function update(json) {
+            // encIdが変わっていればクリアする
+            if (encStartTime != json.encStartTime) vm.items = [];
+            encStartTime = json.encStartTime;
+
+            // 最初は明細非表示
+            json.showDetail = false;
+
+            // 配列に放り込む
+            vm.items.push(json);
+
+            // 配列がmaxCountを超えている場合は古いものを削除
+            while (vm.items.length > maxCount) {
+                vm.items.shift();
+            }
+
+        }
+    </script>
+</body>
+</html>
