@@ -1,11 +1,12 @@
 # DeathReportPlugin
 
-Show DeathReport Overlay for FFXIV ACT OverlayPlugin
+Show DeathReport Overlay for FFXIV ACT OverlayPlugin\
 Needs [RainbowMage/OverlayPlugin](https://github.com/RainbowMage/OverlayPlugin)
 
 誰かがやられたときのログをオーバーレイで出力します。\
 [RainbowMage/OverlayPlugin](https://github.com/RainbowMage/OverlayPlugin)のアドオンとして作成させていただいてます。
 
+![DeathReportPlugin](https://github.com/amama-nagigi/Garage/blob/master/DeathReportPlugin/01.png?raw=true)
 ## 要件
 
 * [Advanced Combat Tracker](https://advancedcombattracker.com/)
