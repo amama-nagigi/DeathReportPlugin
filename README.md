@@ -1,3 +1,7 @@
-# ACT.DeathReporter
+# DeathReportPlugin
 
-誰かがやられた際に自動で死亡ログを表示する小窓を開くACTプラグインです。
+Show DeathReport Overlay for FFXIV ACT OverlayPlugin
+Needs [RainbowMage/OverlayPlugin](https://github.com/RainbowMage/OverlayPlugin)
+
+誰かがやられたときのログをオーバーレイで出力します。
+[RainbowMage/OverlayPlugin](https://github.com/RainbowMage/OverlayPlugin)のアドオンとして作成させていただいてます。
