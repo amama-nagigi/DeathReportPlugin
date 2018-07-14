@@ -127,10 +127,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "D:\Program Files\ACT\OverlayPlugin\addons"
 copy "$(ProjectDir)$(OutDir)resources\deathreport.html" "D:\Program Files\ACT\OverlayPlugin\resources"
-
 xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)dist\$(PlatformName)\addons\" /Y
 xcopy "$(ProjectDir)$(OutDir)resources" "$(ProjectDir)dist\$(PlatformName)\resources\" /Y
-
-powershell -ExecutionPolicy Unrestricted $(ProjectDir)build.ps1 $(ProjectDir)dist\$(PlatformName)\ $(ProjectDir)dist\$(ProjectName)_$(PlatformName).zip</PostBuildEvent>
+powershell -ExecutionPolicy Unrestricted $(ProjectDir)build.ps1 $(ProjectDir)dist\$(PlatformName)\* $(ProjectDir)dist\$(ProjectName)_$(PlatformName).zip</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,1 +1,1 @@
-Compress-Archive -Path $Args[0] -DestinationPath $Args[1]
+Compress-Archive -Force -Path $Args[0] -DestinationPath $Args[1]
