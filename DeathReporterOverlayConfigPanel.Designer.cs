@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.buttonReference = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,6 +45,8 @@
             this.buttonReload = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.checkBoxClickThru = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxLocked = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.deathReporterOverlayConfigBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -57,7 +59,7 @@
             this.checkBoxVisible.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxVisible.AutoSize = true;
             this.checkBoxVisible.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.deathReporterOverlayConfigBindingSource, "IsVisible", true));
-            this.checkBoxVisible.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsVisible", true));
+            this.checkBoxVisible.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxVisible.Location = new System.Drawing.Point(144, 3);
             this.checkBoxVisible.Name = "checkBoxVisible";
             this.checkBoxVisible.Size = new System.Drawing.Size(15, 14);
@@ -74,21 +76,24 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.56232F));
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.checkBoxVisible, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.checkBoxClickThru, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxLocked, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -101,7 +106,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 76);
+            this.label3.Location = new System.Drawing.Point(3, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 12);
             this.label3.TabIndex = 5;
@@ -121,7 +126,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 46);
+            this.label2.Location = new System.Drawing.Point(3, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 12);
             this.label2.TabIndex = 2;
@@ -130,7 +135,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.deathReporterOverlayConfigBindingSource, "SecBeforeDeath", true));
-            this.numericUpDown1.Location = new System.Drawing.Point(144, 43);
+            this.numericUpDown1.Location = new System.Drawing.Point(144, 63);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown1.TabIndex = 3;
@@ -138,22 +143,22 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Controls.Add(this.textBoxUrl);
             this.flowLayoutPanel1.Controls.Add(this.buttonReference);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(144, 68);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(144, 88);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(543, 29);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
-            // textBox1
+            // textBoxUrl
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deathReporterOverlayConfigBindingSource, "Url", true));
-            this.textBox1.Location = new System.Drawing.Point(3, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(379, 19);
-            this.textBox1.TabIndex = 0;
+            this.textBoxUrl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.deathReporterOverlayConfigBindingSource, "Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxUrl.Location = new System.Drawing.Point(3, 5);
+            this.textBoxUrl.Name = "textBoxUrl";
+            this.textBoxUrl.Size = new System.Drawing.Size(379, 19);
+            this.textBoxUrl.TabIndex = 0;
             // 
             // buttonReference
             // 
@@ -163,12 +168,13 @@
             this.buttonReference.TabIndex = 1;
             this.buttonReference.Text = "参照";
             this.buttonReference.UseVisualStyleBackColor = true;
+            this.buttonReference.Click += new System.EventHandler(this.buttonReference_Click);
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 125);
+            this.label4.Location = new System.Drawing.Point(3, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 9;
@@ -181,7 +187,7 @@
             this.flowLayoutPanel2.Controls.Add(this.buttonDevTool);
             this.flowLayoutPanel2.Controls.Add(this.buttonReload);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(144, 103);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(144, 123);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(543, 57);
             this.flowLayoutPanel2.TabIndex = 10;
@@ -214,19 +220,39 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 12);
+            this.label5.Size = new System.Drawing.Size(95, 12);
             this.label5.TabIndex = 11;
-            this.label5.Text = "クリックを透過する";
+            this.label5.Text = "クリックを透過させる";
             // 
             // checkBoxClickThru
             // 
             this.checkBoxClickThru.AutoSize = true;
-            this.checkBoxClickThru.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsClickThru", true));
+            this.checkBoxClickThru.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsClickThru", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxClickThru.Location = new System.Drawing.Point(144, 23);
             this.checkBoxClickThru.Name = "checkBoxClickThru";
             this.checkBoxClickThru.Size = new System.Drawing.Size(15, 14);
             this.checkBoxClickThru.TabIndex = 12;
             this.checkBoxClickThru.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "移動とリサイズを制限する";
+            // 
+            // checkBoxLocked
+            // 
+            this.checkBoxLocked.AutoSize = true;
+            this.checkBoxLocked.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsLocked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxLocked.Location = new System.Drawing.Point(144, 43);
+            this.checkBoxLocked.Name = "checkBoxLocked";
+            this.checkBoxLocked.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxLocked.TabIndex = 14;
+            this.checkBoxLocked.UseVisualStyleBackColor = true;
             // 
             // DeathReporterOverlayConfigPanel
             // 
@@ -254,7 +280,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxUrl;
         private System.Windows.Forms.Button buttonReference;
         private System.Windows.Forms.Button buttonDevTool;
         private System.Windows.Forms.Label label4;
@@ -265,5 +291,7 @@
         private System.Windows.Forms.Button buttonReload;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxClickThru;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxLocked;
     }
 }

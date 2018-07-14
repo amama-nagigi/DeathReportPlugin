@@ -44,5 +44,20 @@ namespace AmamaNagigi.DeathReportPlugin
         {
             this.overlay.Overlay.Renderer.Reload();
         }
+
+        /// <summary>
+        /// 参照ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReference_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                this.textBoxUrl.Text = new Uri(ofd.FileName).ToString();
+            }
+        }
     }
 }
