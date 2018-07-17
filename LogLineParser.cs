@@ -84,12 +84,11 @@ namespace AmamaNagigi.DeathReportPlugin
                         EncountStartTime = encounter.StartTime,
                         Victim = victim,
                         Performer = performer,
-                        DeathTime = deathTime,
-                        DeathTimeString = deathTime.ToString("HH:mm:ss")
+                        DeathTime = deathTime
                     };
 
                     // ログ集計
-                    var sec = this.config.SecBeforeDeath;
+                    var sec = this.config.AddonConfig.SecBeforeDeath;
                     var swings = combatantData.AllInc["All"].Items.Where((e) =>
                     {
                         // Killingは除外
@@ -125,24 +124,6 @@ namespace AmamaNagigi.DeathReportPlugin
                 }
             }
             return null;
-        }
-
-        /// <summary>
-        /// ログをjson化する
-        /// </summary>
-        /// <param name="deathInfo"></param>
-        /// <returns></returns>
-        public string CreateJsonData(DeathInfo deathInfo)
-        {
-            using (var ms = new MemoryStream())
-            using (var sr = new StreamReader(ms))
-            {
-                var serializer = new DataContractJsonSerializer(typeof(DeathInfo));
-                serializer.WriteObject(ms, deathInfo);
-                ms.Position = 0;
-
-                return sr.ReadToEnd();
-            }
         }
     }
 }

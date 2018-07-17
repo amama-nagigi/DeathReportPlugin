@@ -3,6 +3,7 @@
     <meta charset="utf-8" />
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <style>
         * {
             /* フォント （一部のフォントは上手く適用されない） */
@@ -36,14 +37,30 @@
             background-color: transparent;
         }
 
+        ul.header {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+            margin: 0px;
+            padding-left: 0px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #DED7BE;
+            margin: 0px;
+        }
+
         ul.container {
             list-style-type: none;
-            padding-left: 0px;
+            padding: 0px;
+            margin: 0px;
         }
 
         table.detail {
             padding-left: 20px;
             line-height: 80%;
+            width: 100%;
         }
 
         td.damage {
@@ -59,78 +76,85 @@
 </head>
 <body>
     <div id="app">
-        <span v-if="items.length == 0">no data to show.</span>
-        <ul class="container">
-            <li v-for="item in items">
-                <span @click="toggle(item)">[{{item.time}}]{{item.performer}}💀{{item.victim}}</span>
-                <table class="detail" v-if="item.showDetail">
-                    <tr v-for="detail in item.actions">
-                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 20px;">{{detail.before.toFixed(1)}}</td>
-                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" tyle="width: 200px;">{{detail.performer}}</td>
-                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 200px;">{{detail.name}}</td>
-                        <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 40px; text-align: right;">{{detail.point}}</td>
-                    </tr>
-                </table>
-            </li>
-        </ul>
+        <div v-show="visible == true">
+            <ul class="header">
+                <li><span>Encount[{{encStartTime | date}}]</span></li>
+                <li><span @click="hide(this)">×</span></li>
+            </ul>
+            <hr>
+            <ul class="container">
+                <li v-for="item in items">
+                    <span @click="toggle(item)">[{{item.time | date}}]{{item.performer}} 💀 {{item.victim}}</span>
+                    <table class="detail" v-if="item.isExpanded">
+                        <tr v-for="detail in item.actions">
+                            <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 20%;">{{detail.before.toFixed(1)}}</td>
+                            <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" tyle="width: 40%;">{{detail.performer}}</td>
+                            <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 20%;">{{detail.name}}</td>
+                            <td v-bind:class="detail.point < 0 ? 'damage' : 'healing'" style="width: 20%; text-align: right;">{{detail.point}}</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
     </div>
     <script type="text/javascript">
-        var encStartTime = null;
-        var maxCount = 10;
+        var config = {};
 
         // Vueインスタンス初期化
         var vm = new Vue({
             el: "#app",
             data: {
+                encStartTime: null,
+                visible: false,
                 items: []
             },
             methods: {
                 toggle: function (item) {
-                    item.showDetail = !item.showDetail;
+                    item.isExpanded = !item.isExpanded;
+                },
+                hide: function (e) {
+                    this.visible = false;
+                }
+            },
+            filters: {
+                date: function (date) {
+                    return moment(date).format('HH:mm:ss');
                 }
             }
         });
 
-        /* json サンプル
-        {
-            "actions": [
-                {
-                "name": "ショット",
-                "performer": "Fioh Lafihna",
-                "point": -1452,
-                "sec": 2.6279999999999997
-                },
-                {
-                "name": "Caustic Bite (*)",
-                "performer": "Fioh Lafihna",
-                "point": -855,
-                "sec": 1.628
-                }
-            ],
-            "encId": "e386aa25",
-            "performer": "Unknown",
-            "time": "/Date(1531399833628+0900)/",
-            "victim": "アメノ・シロジシ"
+        // ロード時にプラグインから呼び出され、設定情報が渡される
+        function loaded(json) {
+            config = json;
         }
-        */
 
-        // json取得
+        // 誰かが死んだときに呼び出される
         function update(json) {
-            // encIdが変わっていればクリアする
-            if (encStartTime != json.encStartTime) vm.items = [];
-            encStartTime = json.encStartTime;
+            // 表示
+            vm.visible = true;
 
-            // 最初は明細非表示
-            json.showDetail = false;
+            // 戦闘開始時間を設定
+            vm.encStartTime = json.encStartTime;
+
+            // 展開状態を設定
+            json.isExpanded = config.isExpanded;
 
             // 配列に放り込む
             vm.items.push(json);
 
             // 配列がmaxCountを超えている場合は古いものを削除
-            while (vm.items.length > maxCount) {
+            while (vm.items.length > config.maxCount) {
                 vm.items.shift();
             }
+        }
 
+        // 戦闘開始時に呼び出される
+        function startCombat(time) {
+            vm.encStartTime = time;
+            if (config.clearOnStart) {
+                vm.items = [];
+                vm.visible = false;
+            }
         }
     </script>
 </body>

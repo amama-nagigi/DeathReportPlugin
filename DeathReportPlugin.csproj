@@ -101,9 +101,11 @@
       <DependentUpon>DeathReporterOverlayConfigPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\ActionInfo.cs" />
+    <Compile Include="Entities\AddonConfig.cs" />
     <Compile Include="Entities\DeathInfo.cs" />
     <Compile Include="LogLineParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\JsonUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeathReporterOverlayConfigPanel.resx">

@@ -1,27 +1,15 @@
-﻿using RainbowMage.OverlayPlugin;
+﻿using AmamaNagigi.DeathReportPlugin.Entities;
+using RainbowMage.OverlayPlugin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
     public class DeathReporterOverlayConfig : OverlayConfigBase
     {
         #region PluginSetting
-        private DeathReporterOverlayConfig() : base(null) { }
-
-        public override Type OverlayType => typeof(DeathReporterOverlay);
-        #endregion
-
-        /// <summary>
-        /// 直前何秒のログを吐くか
-        /// </summary>
-        public int SecBeforeDeath { get; set; }
+        private DeathReporterOverlayConfig() : base(null) {
+            Initialize();
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -29,9 +17,30 @@ namespace AmamaNagigi.DeathReportPlugin
         /// <param name="name"></param>
         public DeathReporterOverlayConfig(string name) : base(name)
         {
+            Initialize();
+        }
+
+        public override Type OverlayType => typeof(DeathReporterOverlay);
+        #endregion
+
+        /// <summary>
+        /// HTMLに送るコンフィグ
+        /// </summary>
+        public AddonConfig AddonConfig { get; set; }
+
+        /// <summary>
+        /// 初期値の設定
+        /// </summary>
+        private void Initialize()
+        {
             // デフォルト値の設定
             this.Url = GetDefaultUrl();
-            this.SecBeforeDeath = 5;
+
+            this.AddonConfig = new AddonConfig();
+            this.AddonConfig.SecBeforeDeath = 5;
+            this.AddonConfig.MaxCount = 10;
+            this.AddonConfig.IsExpanded = false;
+            this.AddonConfig.ClearOnStart = true;
         }
 
         /// <summary>

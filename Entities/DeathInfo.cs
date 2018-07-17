@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AmamaNagigi.DeathReportPlugin.Entities
 {
@@ -34,18 +31,14 @@ namespace AmamaNagigi.DeathReportPlugin.Entities
         /// <summary>
         /// 死亡時刻
         /// </summary>
-        public DateTime DeathTime { get; set; }
-
-        /// <summary>
-        /// 死亡時刻HH:MM:SS形式
-        /// </summary>
         [DataMember(Name = "time")]
-        public String DeathTimeString { get; set; }
+        public DateTime DeathTime { get; set; }
 
         /// <summary>
         /// 関連アクションリスト 死亡時刻に近い順にセット
         /// </summary>
         [DataMember(Name ="actions")]
         public List<ActionInfo> Actions { get; set; }
+
     }
 }

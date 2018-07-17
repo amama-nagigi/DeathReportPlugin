@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AmamaNagigi.DeathReportPlugin.Entities;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
@@ -58,6 +59,16 @@ namespace AmamaNagigi.DeathReportPlugin
             {
                 this.textBoxUrl.Text = new Uri(ofd.FileName).ToString();
             }
+        }
+
+        /// <summary>
+        /// ダミーデータ送信ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonDummyData_Click(object sender, EventArgs e)
+        {
+            this.overlay.AddDummyDeathReport();
         }
     }
 }
