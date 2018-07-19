@@ -66,7 +66,6 @@
             // 
             this.checkBoxVisible.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxVisible.AutoSize = true;
-            this.checkBoxVisible.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.deathReporterOverlayConfigBindingSource, "IsVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxVisible.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxVisible.Location = new System.Drawing.Point(144, 3);
             this.checkBoxVisible.Name = "checkBoxVisible";
@@ -256,6 +255,7 @@
             // 
             // checkBoxClickThru
             // 
+            this.checkBoxClickThru.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxClickThru.AutoSize = true;
             this.checkBoxClickThru.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsClickThru", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxClickThru.Location = new System.Drawing.Point(144, 23);
@@ -276,6 +276,7 @@
             // 
             // checkBoxLocked
             // 
+            this.checkBoxLocked.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxLocked.AutoSize = true;
             this.checkBoxLocked.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "IsLocked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxLocked.Location = new System.Drawing.Point(144, 43);
@@ -314,6 +315,7 @@
             // 
             // checkBoxClearOnStart
             // 
+            this.checkBoxClearOnStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxClearOnStart.AutoSize = true;
             this.checkBoxClearOnStart.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "AddonConfig.ClearOnStart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxClearOnStart.Location = new System.Drawing.Point(144, 88);
@@ -334,6 +336,7 @@
             // 
             // checkBoxIsExpanded
             // 
+            this.checkBoxIsExpanded.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBoxIsExpanded.AutoSize = true;
             this.checkBoxIsExpanded.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.deathReporterOverlayConfigBindingSource, "AddonConfig.IsExpanded", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxIsExpanded.Location = new System.Drawing.Point(144, 108);

@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="DeathReporterOverlayConfig" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AmamaNagigi.DeathReportPlugin.DeathReporterOverlayConfig, DeathReportPlugin, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>AmamaNagigi.DeathReportPlugin.DeathReporterOverlayConfig, DeathReportPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
