@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AmamaNagigi.DeathReportPlugin.Entities;
+using System.Runtime.CompilerServices;
+using RainbowMage.OverlayPlugin;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
@@ -15,9 +17,10 @@ namespace AmamaNagigi.DeathReportPlugin
     {
         private DeathReportOverlay overlay;
 
-        public DeathReportOverlayConfigPanel()
+        public DeathReportOverlayConfigPanel(DeathReportOverlay overlay)
         {
             InitializeComponent();
+            this.overlay = overlay;
 
             this.deathReporterOverlayConfigBindingSource.DataSource = this.overlay.Config;
         }

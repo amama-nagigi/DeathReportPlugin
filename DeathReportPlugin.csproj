@@ -119,6 +119,9 @@
     <Compile Include="Util\JsonUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DeathReportEventSourceConfigPanel.resx">
+      <DependentUpon>DeathReportEventSourceConfigPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeathReportOverlayConfigPanel.resx">
       <DependentUpon>DeathReportOverlayConfigPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,8 +143,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>echo ACTのフォルダにコピー
-copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "D:\Program Files\ACT\OverlayPlugin\addons"
-copy "$(ProjectDir)$(OutDir)resources\deathreport.html" "D:\Program Files\ACT\OverlayPlugin\resources"
+copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "G:\Program Files\Actor_v2.0.4.2\ACT\plugin\DeathReportPlugin"
+copy "$(ProjectDir)$(OutDir)resources\deathreport.html" "G:\Program Files\Actor_v2.0.4.2\ACT\plugin\DeathReportPlugin\resources"
 echo 配布用アーカイブ作成
 xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)dist\$(ProjectName)\addons\" /Y
 xcopy "$(ProjectDir)$(OutDir)resources" "$(ProjectDir)dist\$(ProjectName)\resources\" /Y

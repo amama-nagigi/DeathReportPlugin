@@ -40,9 +40,6 @@ namespace AmamaNagigi.DeathReportPlugin
             var container = Registry.GetContainer();
             var registry = container.Resolve<Registry>();
 
-            // Register EventSource
-            registry.StartEventSource(new DeathReportEventSource(container));
-
             // Register Overlay
             registry.RegisterOverlay<DeathReportOverlay>();
         }

@@ -15,7 +15,7 @@ namespace AmamaNagigi.DeathReportPlugin
 
         public DeathReportEventSource(TinyIoCContainer container) : base(container)
         {
-            Name = "DeathReportES";
+            Name = "DeathReport EventSource";
 
             // Register Events subscribe to other EventSources/Overlays
             RegisterEventTypes(new List<string>()

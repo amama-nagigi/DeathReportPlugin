@@ -18,19 +18,7 @@ namespace AmamaNagigi.DeathReportPlugin
 
         public DeathReportOverlay(DeathReportOverlayConfig config, string name, TinyIoCContainer container) : base(config, name, container)
         {
-            // タイマー処理は行わない
-            this.Stop();
 
-            // パーサー作成
-            this.parser = new LogLineParser(config);
-
-            // イベントの登録
-            ActGlobals.oFormActMain.OnLogLineRead += this.OnLogLineRead;
-            ActGlobals.oFormActMain.OnCombatStart += this.OnCombatStart;
-            this.Overlay.Renderer.BrowserLoad += this.OnBrowserLoad;
-
-            // ページを表示
-            Navigate(config.Url);
         }
 
         /// <summary>
@@ -53,6 +41,22 @@ namespace AmamaNagigi.DeathReportPlugin
         {
             // 戦闘開始を伝える
             ExecuteScript($"startCombat('{encounterInfo.encounter.StartTime}');");
+        }
+
+        public override void Start()
+        {
+            // パーサー作成
+            this.parser = new LogLineParser(this.Config);
+
+            // イベントの登録
+            ActGlobals.oFormActMain.OnLogLineRead += this.OnLogLineRead;
+            ActGlobals.oFormActMain.OnCombatStart += this.OnCombatStart;
+            this.Overlay.Renderer.BrowserLoad += this.OnBrowserLoad;
+
+            // ページを表示
+            Navigate(this.Config.Url);
+
+            base.Start();
         }
 
         /// <summary>
@@ -142,7 +146,7 @@ namespace AmamaNagigi.DeathReportPlugin
 
         public override Control CreateConfigControl()
         {
-            return new DeathReportOverlayConfigPanel();
+            return new DeathReportOverlayConfigPanel(this);
         }
     }
 }

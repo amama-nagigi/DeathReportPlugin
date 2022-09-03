@@ -345,12 +345,12 @@
             this.checkBoxIsExpanded.TabIndex = 20;
             this.checkBoxIsExpanded.UseVisualStyleBackColor = true;
             // 
-            // DeathReporterOverlayConfigPanel
+            // DeathReportOverlayConfigPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "DeathReporterOverlayConfigPanel";
+            this.Name = "DeathReportOverlayConfigPanel";
             this.Size = new System.Drawing.Size(791, 315);
             ((System.ComponentModel.ISupportInitialize)(this.deathReporterOverlayConfigBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
