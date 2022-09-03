@@ -49,8 +49,7 @@ namespace AmamaNagigi.DeathReportPlugin
         /// <returns></returns>
         private string GetDefaultUrl()
         {
-            // return new Uri(System.IO.Path.Combine(DeathReport.ResourceDirectory, "deathreport.html")).ToString();
-            return "G:\\Program Files\\Actor_v2.0.4.2\\ACT\\plugin\\DeathReportPlugin\\resources\\deathreport.html";
+            return "https://amama-nagigi.github.io/DeathReportPlugin/overlay/";
         }
     }
 }

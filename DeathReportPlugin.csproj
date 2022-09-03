@@ -95,14 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeathReport.cs" />
-    <Compile Include="DeathReportEventSource.cs" />
-    <Compile Include="DeathReportEventSourceConfig.cs" />
-    <Compile Include="DeathReportEventSourceConfigPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DeathReportEventSourceConfigPanel.Designer.cs">
-      <DependentUpon>DeathReportEventSourceConfigPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="DeathReportOverlay.cs" />
     <Compile Include="DeathReportOverlayConfig.cs" />
     <Compile Include="DeathReportOverlayConfigPanel.cs">
@@ -119,9 +111,6 @@
     <Compile Include="Util\JsonUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DeathReportEventSourceConfigPanel.resx">
-      <DependentUpon>DeathReportEventSourceConfigPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DeathReportOverlayConfigPanel.resx">
       <DependentUpon>DeathReportOverlayConfigPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,7 +120,7 @@
     <None Include="Properties\DataSources\DeathReporterOverlayConfig.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\deathreport.html">
+    <Content Include="overlay\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -144,10 +133,8 @@
   <PropertyGroup>
     <PostBuildEvent>echo ACTのフォルダにコピー
 copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "G:\Program Files\Actor_v2.0.4.2\ACT\plugin\DeathReportPlugin"
-copy "$(ProjectDir)$(OutDir)resources\deathreport.html" "G:\Program Files\Actor_v2.0.4.2\ACT\plugin\DeathReportPlugin\resources"
 echo 配布用アーカイブ作成
 xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(ProjectDir)dist\$(ProjectName)\addons\" /Y
-xcopy "$(ProjectDir)$(OutDir)resources" "$(ProjectDir)dist\$(ProjectName)\resources\" /Y
 powershell -ExecutionPolicy Unrestricted $(ProjectDir)build.ps1 $(ProjectDir)dist\$(ProjectName)\* $(ProjectDir)dist\$(ProjectName).zip</PostBuildEvent>
   </PropertyGroup>
 </Project>
