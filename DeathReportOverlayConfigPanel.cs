@@ -11,11 +11,11 @@ using AmamaNagigi.DeathReportPlugin.Entities;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
-    public partial class DeathReporterOverlayConfigPanel : UserControl
+    public partial class DeathReportOverlayConfigPanel : UserControl
     {
-        private DeathReporterOverlay overlay;
+        private DeathReportOverlay overlay;
 
-        public DeathReporterOverlayConfigPanel(DeathReporterOverlay overlay)
+        public DeathReportOverlayConfigPanel(DeathReportOverlay overlay)
         {
             InitializeComponent();
 

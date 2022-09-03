@@ -11,11 +11,11 @@ using RainbowMage.HtmlRenderer;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
-    public class DeathReporterOverlay : OverlayBase<DeathReporterOverlayConfig>
+    public class DeathReportOverlay : OverlayBase<DeathReportOverlayConfig>
     {
         private LogLineParser parser;
 
-        public DeathReporterOverlay(DeathReporterOverlayConfig config) : base(config, config.Name)
+        public DeathReportOverlay(DeathReportOverlayConfig config) : base(config, config.Name)
         {
             // タイマー処理は行わない
             this.Stop();

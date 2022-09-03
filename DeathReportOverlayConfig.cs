@@ -4,10 +4,10 @@ using System;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
-    public class DeathReporterOverlayConfig : OverlayConfigBase
+    public class DeathReportOverlayConfig : OverlayConfigBase
     {
         #region PluginSetting
-        private DeathReporterOverlayConfig() : base(null) {
+        private DeathReportOverlayConfig() : base(null) {
             Initialize();
         }
 
@@ -15,12 +15,12 @@ namespace AmamaNagigi.DeathReportPlugin
         /// コンストラクタ
         /// </summary>
         /// <param name="name"></param>
-        public DeathReporterOverlayConfig(string name) : base(name)
+        public DeathReportOverlayConfig(string name) : base(name)
         {
             Initialize();
         }
 
-        public override Type OverlayType => typeof(DeathReporterOverlay);
+        public override Type OverlayType => typeof(DeathReportOverlay);
         #endregion
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace AmamaNagigi.DeathReportPlugin
         /// <returns></returns>
         private string GetDefaultUrl()
         {
-            return new Uri(System.IO.Path.Combine(DeathReporter.ResourceDirectory, "deathreport.html")).ToString();
+            return new Uri(System.IO.Path.Combine(DeathReport.ResourceDirectory, "deathreport.html")).ToString();
         }
     }
 }

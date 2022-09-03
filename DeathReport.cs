@@ -10,32 +10,32 @@ using System.Windows.Forms;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
-    public class DeathReporter : IOverlayAddon
+    public class DeathReport : IOverlayAddon
     {
         #region PluginSetting
         public string Name => "Death Report";
 
         public string Description => "Show death report.";
 
-        public Type OverlayType => typeof(DeathReporterOverlay);
+        public Type OverlayType => typeof(DeathReportOverlay);
 
-        public Type OverlayConfigType => typeof(DeathReporterOverlayConfig);
+        public Type OverlayConfigType => typeof(DeathReportOverlayConfig);
 
-        public Type OverlayConfigControlType => typeof(DeathReporterOverlayConfigPanel);
+        public Type OverlayConfigControlType => typeof(DeathReportOverlayConfigPanel);
 
         public IOverlay CreateOverlayInstance(IOverlayConfig config)
         {
-            return new DeathReporterOverlay((DeathReporterOverlayConfig)config);
+            return new DeathReportOverlay((DeathReportOverlayConfig)config);
         }
 
         public IOverlayConfig CreateOverlayConfigInstance(string name)
         {
-            return new DeathReporterOverlayConfig(name);
+            return new DeathReportOverlayConfig(name);
         }
 
         public Control CreateOverlayConfigControlInstance(IOverlay overlay)
         {
-            return new DeathReporterOverlayConfigPanel((DeathReporterOverlay)overlay);
+            return new DeathReportOverlayConfigPanel((DeathReportOverlay)overlay);
         }
 
         public void Dispose()
@@ -50,7 +50,7 @@ namespace AmamaNagigi.DeathReportPlugin
         /// コンストラクタ
         /// (EnmityPluginよりコピーさせていただきました。)
         /// </summary>
-        public DeathReporter()
+        public DeathReport()
         {
             Assembly asm = Assembly.GetCallingAssembly();
             if (asm.Location == null || asm.Location == "")

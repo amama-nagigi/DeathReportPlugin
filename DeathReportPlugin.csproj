@@ -94,14 +94,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeathReporter.cs" />
-    <Compile Include="DeathReporterOverlay.cs" />
-    <Compile Include="DeathReporterOverlayConfig.cs" />
-    <Compile Include="DeathReporterOverlayConfigPanel.cs">
+    <Compile Include="DeathReport.cs" />
+    <Compile Include="DeathReportOverlay.cs" />
+    <Compile Include="DeathReportOverlayConfig.cs" />
+    <Compile Include="DeathReportOverlayConfigPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DeathReporterOverlayConfigPanel.Designer.cs">
-      <DependentUpon>DeathReporterOverlayConfigPanel.cs</DependentUpon>
+    <Compile Include="DeathReportOverlayConfigPanel.Designer.cs">
+      <DependentUpon>DeathReportOverlayConfigPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\ActionInfo.cs" />
     <Compile Include="Entities\AddonConfig.cs" />
@@ -111,8 +111,8 @@
     <Compile Include="Util\JsonUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DeathReporterOverlayConfigPanel.resx">
-      <DependentUpon>DeathReporterOverlayConfigPanel.cs</DependentUpon>
+    <EmbeddedResource Include="DeathReportOverlayConfigPanel.resx">
+      <DependentUpon>DeathReportOverlayConfigPanel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

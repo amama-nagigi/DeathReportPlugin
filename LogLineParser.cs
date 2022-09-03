@@ -23,12 +23,12 @@ namespace AmamaNagigi.DeathReportPlugin
         /// </summary>
         private List<int> targetSwingType;
 
-        private DeathReporterOverlayConfig config;
+        private DeathReportOverlayConfig config;
 
         /// <summary>
         /// 初期化子
         /// </summary>
-        public LogLineParser(DeathReporterOverlayConfig config)
+        public LogLineParser(DeathReportOverlayConfig config)
         {
             // 設定への参照を設定
             this.config = config;

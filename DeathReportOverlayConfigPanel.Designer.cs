@@ -1,6 +1,6 @@
 ﻿namespace AmamaNagigi.DeathReportPlugin
 {
-    partial class DeathReporterOverlayConfigPanel
+    partial class DeathReportOverlayConfigPanel
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -75,7 +75,7 @@
             // 
             // deathReporterOverlayConfigBindingSource
             // 
-            this.deathReporterOverlayConfigBindingSource.DataSource = typeof(AmamaNagigi.DeathReportPlugin.DeathReporterOverlayConfig);
+            this.deathReporterOverlayConfigBindingSource.DataSource = typeof(AmamaNagigi.DeathReportPlugin.DeathReportOverlayConfig);
             // 
             // tableLayoutPanel1
             // 
