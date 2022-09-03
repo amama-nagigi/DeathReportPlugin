@@ -15,11 +15,10 @@ namespace AmamaNagigi.DeathReportPlugin
     {
         private DeathReportOverlay overlay;
 
-        public DeathReportOverlayConfigPanel(DeathReportOverlay overlay)
+        public DeathReportOverlayConfigPanel()
         {
             InitializeComponent();
 
-            this.overlay = overlay;
             this.deathReporterOverlayConfigBindingSource.DataSource = this.overlay.Config;
         }
 

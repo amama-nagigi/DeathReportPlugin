@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RainbowMage.HtmlRenderer;
+using System.Windows.Forms;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
@@ -15,7 +16,7 @@ namespace AmamaNagigi.DeathReportPlugin
     {
         private LogLineParser parser;
 
-        public DeathReportOverlay(DeathReportOverlayConfig config) : base(config, config.Name)
+        public DeathReportOverlay(DeathReportOverlayConfig config, string name, TinyIoCContainer container) : base(config, name, container)
         {
             // タイマー処理は行わない
             this.Stop();
@@ -137,6 +138,11 @@ namespace AmamaNagigi.DeathReportPlugin
             AddDeathReport(d);
             AddDeathReport(d);
             AddDeathReport(d);
+        }
+
+        public override Control CreateConfigControl()
+        {
+            return new DeathReportOverlayConfigPanel();
         }
     }
 }

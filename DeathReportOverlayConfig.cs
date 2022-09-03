@@ -49,7 +49,8 @@ namespace AmamaNagigi.DeathReportPlugin
         /// <returns></returns>
         private string GetDefaultUrl()
         {
-            return new Uri(System.IO.Path.Combine(DeathReport.ResourceDirectory, "deathreport.html")).ToString();
+            // return new Uri(System.IO.Path.Combine(DeathReport.ResourceDirectory, "deathreport.html")).ToString();
+            return "";
         }
     }
 }
