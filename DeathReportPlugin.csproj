@@ -95,6 +95,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeathReport.cs" />
+    <Compile Include="DeathReportEventSource.cs" />
+    <Compile Include="DeathReportEventSourceConfig.cs" />
+    <Compile Include="DeathReportEventSourceConfigPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeathReportEventSourceConfigPanel.Designer.cs">
+      <DependentUpon>DeathReportEventSourceConfigPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeathReportOverlay.cs" />
     <Compile Include="DeathReportOverlayConfig.cs" />
     <Compile Include="DeathReportOverlayConfigPanel.cs">

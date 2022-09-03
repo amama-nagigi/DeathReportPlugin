@@ -10,55 +10,41 @@ using System.Windows.Forms;
 
 namespace AmamaNagigi.DeathReportPlugin
 {
-    public class DeathReport : IOverlayAddon
+    public class DeathReport : IActPluginV1, IOverlayAddonV2
     {
-        #region PluginSetting
-        public string Name => "Death Report";
+        public static string pluginPath = "";
 
-        public string Description => "Show death report.";
-
-        public Type OverlayType => typeof(DeathReportOverlay);
-
-        public Type OverlayConfigType => typeof(DeathReportOverlayConfig);
-
-        public Type OverlayConfigControlType => typeof(DeathReportOverlayConfigPanel);
-
-        public IOverlay CreateOverlayInstance(IOverlayConfig config)
+        public void DeInitPlugin()
         {
-            return new DeathReportOverlay((DeathReportOverlayConfig)config);
+            
         }
-
-        public IOverlayConfig CreateOverlayConfigInstance(string name)
+        public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
-            return new DeathReportOverlayConfig(name);
-        }
+            pluginStatusText.Text = "Ready.";
 
-        public Control CreateOverlayConfigControlInstance(IOverlay overlay)
-        {
-            return new DeathReportOverlayConfigPanel((DeathReportOverlay)overlay);
-        }
+            // We don't need a tab here.
+            ((TabControl)pluginScreenSpace.Parent).TabPages.Remove(pluginScreenSpace);
 
-        public void Dispose()
-        {
-
-        }
-        #endregion
-
-        public static string ResourceDirectory { get; set; }
-
-        /// <summary>
-        /// コンストラクタ
-        /// (EnmityPluginよりコピーさせていただきました。)
-        /// </summary>
-        public DeathReport()
-        {
-            Assembly asm = Assembly.GetCallingAssembly();
-            if (asm.Location == null || asm.Location == "")
+            foreach (var plugin in ActGlobals.oFormActMain.ActPlugins)
             {
-                // 場所がわからないなら自分の場所にする
-                asm = Assembly.GetExecutingAssembly();
+                if (plugin.pluginObj == this)
+                {
+                    pluginPath = plugin.pluginFile.FullName;
+                    break;
+                }
             }
-            ResourceDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(asm.Location), "resources");
+        }
+
+        public void Init()
+        {
+            var container = Registry.GetContainer();
+            var registry = container.Resolve<Registry>();
+
+            // Register EventSource
+            registry.StartEventSource(new DeathReportEventSource(container));
+
+            // Register Overlay
+            registry.RegisterOverlay<DeathReportOverlay>();
         }
     }
 }
