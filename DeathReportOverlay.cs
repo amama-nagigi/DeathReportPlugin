@@ -44,19 +44,6 @@ namespace AmamaNagigi.DeathReportPlugin
         }
 
         /// <summary>
-        /// ブラウザスクリプト実行
-        /// </summary>
-        /// <param name="script"></param>
-        private void ExecuteScript(string script)
-        {
-            if (this.Overlay != null && this.Overlay.Renderer != null && this.Overlay.Renderer.Browser != null)
-            {
-                // スクリプト実行
-                this.Overlay.Renderer.Browser.GetMainFrame().ExecuteJavaScript(script, null, 0);
-            }
-        }
-
-        /// <summary>
         /// 戦闘開始イベント
         /// </summary>
         /// <param name="isImport"></param>
@@ -100,10 +87,7 @@ namespace AmamaNagigi.DeathReportPlugin
         private void AddDeathReport(DeathInfo info)
         {
             var json = JsonUtil.CreateJsonData(info);
-            if (this.Overlay != null && this.Overlay.Renderer != null && this.Overlay.Renderer.Browser != null)
-            {
-                ExecuteScript($"update({json});");
-            }
+            ExecuteScript($"update({json});");
         }
 
         /// <summary>

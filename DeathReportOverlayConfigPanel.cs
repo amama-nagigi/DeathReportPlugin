@@ -30,7 +30,7 @@ namespace AmamaNagigi.DeathReportPlugin
         /// <param name="e"></param>
         private void buttonDevTool_Click(object sender, EventArgs e)
         {
-            if (this.overlay.Overlay != null && this.overlay.Overlay.Renderer != null && this.overlay.Overlay.Renderer.Browser != null)
+            if (this.overlay.Overlay != null && this.overlay.Overlay.Renderer != null)
             {
                 this.overlay.Overlay.Renderer.showDevTools();
             }
